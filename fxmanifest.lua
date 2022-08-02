@@ -16,7 +16,7 @@ client_scripts {
     'config.lua',
 }
 files {
-    
+    'ui/*',
 }
 
 
