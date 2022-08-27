@@ -28,8 +28,6 @@ ui_page {
     "ui/html/dist/js/*.*",
     "ui/html/dist/css/*.*"
  }
- 
-
 
 dependencies {
     'es_extended',
