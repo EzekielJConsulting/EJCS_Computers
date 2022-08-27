@@ -10,14 +10,25 @@ shared_scripts {
 }
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'config.lua'
+    'config.lua',
+    'server/functions.lua',
+    'server/main.lua'
 }
 client_scripts {
     'config.lua',
+    'client/main.lua'
 }
-files {
-    'ui/*',
-}
+
+ui_page {
+    "ui/html/dist/index.html"
+ }
+ 
+ files {
+    "ui/html/dist/index.html",
+    "ui/html/dist/js/*.*",
+    "ui/html/dist/css/*.*"
+ }
+ 
 
 
 dependencies {
