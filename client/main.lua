@@ -87,7 +87,7 @@ end)
 
 -- Command used to open the view ( you can make the view open on any condition of your choice )
 RegisterCommand("openview", function()
-   sendPlayerDataToApp()
+   SendPlayerDataToApp()
    SetDisplay(not display, "base")
 end)
 
@@ -96,7 +96,7 @@ end)
 
 -- Add qtarget trigger to all computers by hash
 AddEventHandler('poweron', function(data)
-    sendPlayerDataToApp()
+    SendPlayerDataToApp()
 	SetDisplay(true, 'base')
     -- openComputer()
 end)
@@ -106,9 +106,36 @@ end)
 
 computers = Config.computer_models
 print(computers)
-exports.qtarget:AddTargetModel(computers, {
+exports.qtarget:AddTargetModel(computers,{
 	options = options,
-	distance = 2
+	distance = 2,
 })
+
+manualComputers = Config.manualComputers
+for i, computer in ipairs(manualComputers) do
+    exports.qtarget:AddBoxZone(computer.name, computer.coords, computer.length, computer.width, {
+        name = computer.label,
+        heading = computer.heading,
+        debugPoly = computer.debug,
+        minZ = computer.minZ,
+        maxZ = computer.maxZ
+      }, {
+            options = options,
+            distance = 3.5
+        }
+    )
+end
+
+-- exports.qtarget:AddBoxZone("DavisPC1", vector3(375.9, -1603.08, 30.06), 0.6, 0.6, {
+--     name = "davis pc 1",
+--     heading = 330,
+--     debugPoly = true,
+--     minZ = 26.66,
+--     maxZ = 30.66
+--   }, {
+-- 		options = options,
+-- 		distance = 3.5
+--     }
+-- )
 
 

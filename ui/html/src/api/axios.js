@@ -4,7 +4,7 @@ import axios from "axios";
 // example -> baseURL: "https://<resource_name_here>/"
 // connection has to be secure ( HTTPS )
 const api = axios.create({
-	baseURL: "https://fivem-vue-bolierplate/",
+	baseURL: "https://EJCS_Computers/",
 });
 
 export default api;

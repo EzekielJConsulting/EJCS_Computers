@@ -32,5 +32,122 @@ Config.computer_models = {
     2002317235,
     -676527372,
     2028748281,
-    -954257764
+    -954257764,
+    810004487,
+    1123308896,
+    79209609,
+    829413118
+}
+
+Config.manualComputers = {
+    {
+        coords = vector3(373.13, -1600.82, 30.05),
+        length = 1,
+        width = 1,
+        name = "davispc2",
+        label = "Davis PC 2",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(375.9, -1603.08, 30.06),
+        length = 0.6,
+        width = 0.6,
+        name = "DavisPC1",
+        label = "Davis PC 1",
+        heading = 330,
+        minZ = 26.66,
+        maxZ = 30.66,
+        debug = true
+    },
+    {
+        coords = vector3(369.1, -1597.53, 30.05),
+        length = 1,
+        width = 1,
+        name = "davispc3",
+        label = "Davis PC 3",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(368.61, -1600.76, 30.06),
+        length = 1,
+        width = 1,
+        name = "davispc4",
+        label = "Davis PC 4",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(369.94, -1602.05, 30.05),
+        length = 1,
+        width = 1,
+        name = "davispc5",
+        label = "Davis PC 5",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(373.99, -1605.55, 30.05),
+        length = 1,
+        width = 1,
+        name = "davispc6",
+        label = "Davis PC 6",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(366.54, -1596.91, 31.05),
+        length = 1,
+        width = 1,
+        name = "davispc7",
+        label = "Davis PC 7",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(364.3, -1603.11, 30.85),
+        length = 1,
+        width = 1,
+        name = "davispc8",
+        label = "Davis PC 8",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(356.56, -1596.63, 31.05),
+        length = 1,
+        width = 1,
+        name = "davisofficepc1",
+        label = "Davis Office PC 1",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
+    {
+        coords = vector3(364.63, -1587.04, 31.08),
+        length = 1,
+        width = 1,
+        name = "davisofficepc2",
+        label = "Davis Office PC 2",
+        heading = 0,
+        minZ = 29.05,
+        maxZ = 33.05,
+        debug = true
+    },
 }
