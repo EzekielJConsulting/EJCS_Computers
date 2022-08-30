@@ -5,16 +5,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		playerID: "",
+		playerData: {},
 	},
 	getters: {
-		playerID(state) {
-			return state.playerID;
+		playerData(state) {
+			return state.playerData;
 		},
 	},
 	mutations: {
-		setPlayerID(state, payload) {
-			state.playerID = payload.data;
+		setplayerData(state, payload) {
+			state.playerData = payload.data;
 		},
 	},
 	actions: {},

@@ -9,8 +9,11 @@
 					></v-card-title
 				>
 				<v-card-subtitle>Welcome to the example card</v-card-subtitle>
-				<div v-if="playerID">
-					<div>PlayerID: {{ playerID }}</div>
+				<div v-if="playerData">
+					<div>PlayerID: {{ playerData.id}}</div>
+					<div>PlayerName: {{ playerData.name}}</div>
+					<div>Job: {{ playerData.job.name}}</div>
+					<div>Rank: {{ playerData.job.rank}}</div>
 				</div>
 				<v-alert type="error" dark shaped v-if="error">{{ error }}</v-alert>
 				<v-text-field
@@ -60,7 +63,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters(["playerID"]),
+		...mapGetters(["playerData"]),
 	},
 	methods: {
 		sendError(text) {

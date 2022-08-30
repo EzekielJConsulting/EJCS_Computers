@@ -1,18 +1,37 @@
-options = {
-    {
-        event = "poweron",
-        icon = "fas fa-power-off",
-        label = "Power on Computer",
-        num = 1
-    },
-    {
-        event = "scandoc",
-        icon = "fas fa-paperclip",
-        label = "Scan Document",
-        num = 2
-    }
-}
+ESX = nil
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(30)
+	end
+end)
 
+local options = {}
+if GetResourceState('EJCS_Documents'):find('start') then
+   options = {
+      {
+         event = "poweron",
+         icon = "fas fa-power-off",
+         label = "Power on Computer",
+         num = 1
+      },
+      {
+         event = "scandoc",
+         icon = "fas fa-paperclip",
+         label = "Scan Document",
+         num = 2
+      }
+   }
+else
+   options = {
+      {
+         event = "poweron",
+         icon = "fas fa-power-off",
+         label = "Power on Computer",
+         num = 1
+      }
+   }
+end
 
 
 local display = false
@@ -20,10 +39,17 @@ local display = false
 -- SendPlayerDataToApp() -> example of sending data to the app and changing its corresponding state in the vuex store
 function SendPlayerDataToApp()
    local playerID = PlayerPedId()
-   SendNUIMessage({
-      type = 'setPlayerID',
-      data = playerID
-   })
+   print(playerID)
+   local PlayerID = GetPlayerServerId(NetworkGetPlayerIndexFromPed(playerID))
+   print(PlayerID)
+   ESX.TriggerServerCallback('ejcscomp:getPlayerData', function(playerData)
+      print(playerData.name)
+      SendNUIMessage({
+         type = 'setPlayerData',
+         data = playerData
+      })
+   end,PlayerID)
+   
 end
 
 -- SetDisplay() -> changes the toggle state of our vue app ( isVisible = !isVisible )
@@ -96,13 +122,15 @@ end)
 
 -- Add qtarget trigger to all computers by hash
 AddEventHandler('poweron', function(data)
-    SendPlayerDataToApp()
+   SendPlayerDataToApp()
 	SetDisplay(true, 'base')
     -- openComputer()
 end)
 AddEventHandler('scandoc', function(data)
 	-- scandoc()
 end)
+
+
 
 computers = Config.computer_models
 print(computers)
@@ -125,6 +153,11 @@ for i, computer in ipairs(manualComputers) do
         }
     )
 end
+
+exports('openComputer', function()
+   SendPlayerDataToApp()
+	SetDisplay(true, 'base')
+end)
 
 -- exports.qtarget:AddBoxZone("DavisPC1", vector3(375.9, -1603.08, 30.06), 0.6, 0.6, {
 --     name = "davis pc 1",

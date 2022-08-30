@@ -14,7 +14,7 @@ export default {
 		isVisible: false,
 	}),
 	methods: {
-		...mapMutations(["setPlayerID"]),
+		...mapMutations(["setplayerData"]),
 		toggleShow(view) {
 			switch (view) {
 				case "base":
