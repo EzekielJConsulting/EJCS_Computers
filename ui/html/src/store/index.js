@@ -14,7 +14,7 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		setplayerData(state, payload) {
-			state.playerData = payload.data;
+			state.playerData = JSON.parse(payload.data);
 		},
 	},
 	actions: {},

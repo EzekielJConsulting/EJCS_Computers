@@ -39,11 +39,23 @@ local display = false
 -- SendPlayerDataToApp() -> example of sending data to the app and changing its corresponding state in the vuex store
 function SendPlayerDataToApp()
    local playerID = PlayerPedId()
-   print(playerID)
+   -- print(playerID)
    local PlayerID = GetPlayerServerId(NetworkGetPlayerIndexFromPed(playerID))
-   print(PlayerID)
+   -- print(PlayerID)
    ESX.TriggerServerCallback('ejcscomp:getPlayerData', function(playerData)
-      print(playerData.name)
+      job = ESX.GetPlayerData().job.name
+      grade = ESX.GetPlayerData().job.grade
+      label = ESX.GetPlayerData().job.grade_label
+      rank = ESX.GetPlayerData().job.grade_name
+      playerData.job.name = job
+      playerData.job.grade = grade
+      print(label)
+      print(rank)
+      playerData = json.encode(playerData)
+      print(type(playerData))
+      -- print(playerData.name)
+      -- print(job)
+      
       SendNUIMessage({
          type = 'setPlayerData',
          data = playerData
