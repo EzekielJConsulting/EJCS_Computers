@@ -9,17 +9,15 @@
 					></v-card-title
 				>
 				<v-card-subtitle>Welcome to the example card</v-card-subtitle>
-				<div v-if="playerData">
-					<div>PlayerID: {{ playerData.id}}</div>
-					<div>PlayerName: {{ playerData.name}}</div>
-					<div>Job: {{ playerData.job.name}}</div>
-					<div>Rank: {{ playerData.job.rank}}</div>
+				<div v-if="playerID">
+					<div>PlayerID: {{ playerID.name }}</div>
 				</div>
 				<v-alert type="error" dark shaped v-if="error">{{ error }}</v-alert>
 				<v-text-field
 					outlined
 					label="Your name goes here"
 					v-model="userName"
+					value="{{playerID.name}}"
 				></v-text-field>
 				<v-textarea
 					outlined
@@ -62,8 +60,15 @@ export default {
 			message: "",
 		};
 	},
+	created(){
+		 window.addEventListener('keydown', (e) => {
+			if (e.key == 'Escape') {
+				exitMenu();
+			}
+		});
+	},
 	computed: {
-		...mapGetters(["playerData"]),
+		...mapGetters(["playerID"]),
 	},
 	methods: {
 		sendError(text) {

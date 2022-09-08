@@ -25,8 +25,11 @@ ui_page {
  
  files {
     "ui/html/dist/index.html",
+    "ui/html/index.html",
     "ui/html/dist/js/*.*",
-    "ui/html/dist/css/*.*"
+    "ui/html/dist/css/*.*",
+    "ui/html/dist/imgs/*.*",
+    "ui/html/dist/*/*.*"
  }
 
 dependencies {

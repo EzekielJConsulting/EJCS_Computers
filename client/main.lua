@@ -44,20 +44,23 @@ function SendPlayerDataToApp()
    -- print(PlayerID)
    ESX.TriggerServerCallback('ejcscomp:getPlayerData', function(playerData)
       job = ESX.GetPlayerData().job.name
+      jobLabel = ESX.GetPlayerData().job.label
       grade = ESX.GetPlayerData().job.grade
       label = ESX.GetPlayerData().job.grade_label
       rank = ESX.GetPlayerData().job.grade_name
       playerData.job.name = job
       playerData.job.grade = grade
-      print(label)
-      print(rank)
+      playerData.job.position = label
+      playerData.job.rank = rank
+      playerData.job.label = jobLabel
+      print(jobLabel)
       playerData = json.encode(playerData)
-      print(type(playerData))
+      print(playerData)
       -- print(playerData.name)
       -- print(job)
       
       SendNUIMessage({
-         type = 'setPlayerData',
+         type = 'setPlayerID',
          data = playerData
       })
    end,PlayerID)
@@ -66,18 +69,11 @@ end
 
 -- SetDisplay() -> changes the toggle state of our vue app ( isVisible = !isVisible )
 --              -> it can also be used to change the app view
-function SetDisplay(bool, view)
+function SetDisplay(bool)
    display = bool
-   if (not view) then
-      SendNUIMessage({
-         type = 'toggleShow',
-      })
-   else
-      SendNUIMessage({
-         type = 'toggleShow',
-         payload = { view }
-      })
-   end
+   SendNUIMessage({
+      type = 'toggleShow',
+   })
    SetNuiFocus(bool, bool)
 end
 
@@ -126,7 +122,7 @@ end)
 -- Command used to open the view ( you can make the view open on any condition of your choice )
 RegisterCommand("openview", function()
    SendPlayerDataToApp()
-   SetDisplay(not display, "base")
+   SetDisplay(true)
 end)
 
 
@@ -135,7 +131,7 @@ end)
 -- Add qtarget trigger to all computers by hash
 AddEventHandler('poweron', function(data)
    SendPlayerDataToApp()
-	SetDisplay(true, 'base')
+	SetDisplay(true)
     -- openComputer()
 end)
 AddEventHandler('scandoc', function(data)
@@ -168,7 +164,7 @@ end
 
 exports('openComputer', function()
    SendPlayerDataToApp()
-	SetDisplay(true, 'base')
+	SetDisplay(true)
 end)
 
 -- exports.qtarget:AddBoxZone("DavisPC1", vector3(375.9, -1603.08, 30.06), 0.6, 0.6, {
