@@ -16,20 +16,17 @@ server_scripts {
 }
 client_scripts {
     'config.lua',
-    'client/main.lua'
+    'client/main.lua',
+    'client/utils.lua'
 }
 
-ui_page {
-    "ui/html/dist/index.html"
- }
+ui_page 'ui/build/index.html'
  
  files {
-    "ui/html/dist/index.html",
-    "ui/html/index.html",
-    "ui/html/dist/js/*.*",
-    "ui/html/dist/css/*.*",
-    "ui/html/dist/imgs/*.*",
-    "ui/html/dist/*/*.*"
+    files {
+        'ui/build/index.html',
+        'ui/build/**/*'
+      }
  }
 
 dependencies {
