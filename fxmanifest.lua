@@ -21,11 +21,11 @@ client_scripts {
     'client/utils.lua'
 }
 
-ui_page 'ui/build/index.html'
+ui_page 'web/build/index.html'
  
 files {
-    'ui/build/index.html',
-    'ui/build/**/*'
+    'web/build/index.html',
+    'web/build/**/*'
 }
 
 dependencies {
