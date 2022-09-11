@@ -1,7 +1,7 @@
-.DS_Store
-ui/html/node_modules
-ui/html/build
-
+.DS_Stor
+/web/node_modules/
+/web/dist/
+!web/node_modules/fivem-nui-react-lib
 
 # local env files
 .env.local

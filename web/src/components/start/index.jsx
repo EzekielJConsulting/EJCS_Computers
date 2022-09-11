@@ -239,19 +239,19 @@ export const CalnWid = () => {
 		collapse === "" ? setCollapse("collapse") : setCollapse("");
 	};
 
-	useEffect(() => {
-		if (!loaded) {
-			setLoad(true);
-			window.dycalendar.draw({
-				target: "#dycalendar",
-				type: "month",
-				dayformat: "ddd",
-				monthformat: "full",
-				prevnextbutton: "show",
-				highlighttoday: true,
-			});
-		}
-	});
+	// useEffect(() => {
+	// 	if (!loaded) {
+	// 		setLoad(true);
+	// 		window.dycalendar.draw({
+	// 			target: "#dycalendar",
+	// 			type: "month",
+	// 			dayformat: "ddd",
+	// 			monthformat: "full",
+	// 			prevnextbutton: "show",
+	// 			highlighttoday: true,
+	// 		});
+	// 	}
+	// });
 
 	return (
 		<div
@@ -275,7 +275,7 @@ export const CalnWid = () => {
 					)}
 				</div>
 			</div>
-			<div id="dycalendar"></div>
+			{/* <div id="dycalendar"></div> */}
 		</div>
 	);
 };

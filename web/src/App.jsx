@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useDispatch, useSelector } from "react-redux";
+import { useVisible } from './context/Provider'
 import "./i18nextConf";
 import "./index.css";
 
@@ -70,6 +71,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 function App() {
 	const apps = useSelector((state) => state.apps);
 	const wall = useSelector((state) => state.wallpaper);
+	const { visible, setVisible } = useVisible()
 	const dispatch = useDispatch();
 
 	const afterMath = (event) => {

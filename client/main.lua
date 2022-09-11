@@ -38,29 +38,8 @@ local display = false
 
 local function toggleNuiFrame(shouldShow)
    SetNuiFocus(shouldShow, shouldShow)
-   SendReactMessage('setVisible', shouldShow)
- end
- 
- RegisterCommand('show-nui', function()
-   toggleNuiFrame(true)
-   debugPrint('Show NUI frame')
- end)
- 
- RegisterNUICallback('hideFrame', function(_, cb)
-   toggleNuiFrame(false)
-   debugPrint('Hide NUI frame')
-   cb({})
- end)
- 
- RegisterNUICallback('getClientData', function(data, cb)
-   debugPrint('Data sent by React', json.encode(data))
- 
- -- Lets send back client coords to the React frame for use
-   local curCoords = GetEntityCoords(PlayerPedId())
- 
-   local retData<const> = { x = curCoords.x, y = curCoords.y, z = curCoords.z }
-   cb(retData)
- end)
+   SendReactMessage('toggleVisibility', shouldShow)
+end
 
 -- SendPlayerDataToApp() -> example of sending data to the app and changing its corresponding state in the vuex store
 function SendPlayerDataToApp()
@@ -96,8 +75,7 @@ end
 
 -- Command used to open the view ( you can make the view open on any condition of your choice )
 RegisterCommand("openview", function()
-   SendPlayerDataToApp()
-   SetDisplay(true)
+   toggleNuiFrame(true)
 end)
 
 
@@ -105,9 +83,7 @@ end)
 
 -- Add qtarget trigger to all computers by hash
 AddEventHandler('poweron', function(data)
-   SendPlayerDataToApp()
-	SetDisplay(true)
-    -- openComputer()
+   toggleNuiFrame(true)
 end)
 AddEventHandler('scandoc', function(data)
 	-- scandoc()
@@ -138,8 +114,7 @@ for i, computer in ipairs(manualComputers) do
 end
 
 exports('openComputer', function()
-   SendPlayerDataToApp()
-	SetDisplay(true)
+   toggleNuiFrame(true)
 end)
 
 -- exports.qtarget:AddBoxZone("DavisPC1", vector3(375.9, -1603.08, 30.06), 0.6, 0.6, {
