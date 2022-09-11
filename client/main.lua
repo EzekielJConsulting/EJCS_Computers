@@ -37,6 +37,7 @@ end
 local display = false
 
 local function toggleNuiFrame(shouldShow)
+   SetNuiFocus(shouldShow, shouldShow)
    SendReactMessage('toggleVisibility', shouldShow)
 end
 
