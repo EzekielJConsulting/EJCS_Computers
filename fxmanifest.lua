@@ -4,6 +4,7 @@ game 'gta5'
 author 'EzekielJ Development Studios'
 description 'Immersive Complex in-game computer system'
 version '0.0.1'
+lua54 'yes'
 
 shared_scripts {
 
@@ -22,12 +23,10 @@ client_scripts {
 
 ui_page 'ui/build/index.html'
  
- files {
-    files {
-        'ui/build/index.html',
-        'ui/build/**/*'
-      }
- }
+files {
+    'ui/build/index.html',
+    'ui/build/**/*'
+}
 
 dependencies {
     'es_extended',

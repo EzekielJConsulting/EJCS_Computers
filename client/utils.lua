@@ -18,7 +18,7 @@ local debugIsEnabled = GetConvarInt(('%s-debugMode'):format(currentResourceName)
 --- will output a nice prettfied message if debugMode is on
 function debugPrint(...)
   if not debugIsEnabled then return end
-  local args <const> = { ... }
+  local args<const> = { ... }
 
   local appendStr = ''
   for _, v in ipairs(args) do

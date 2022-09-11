@@ -58,7 +58,7 @@ local function toggleNuiFrame(shouldShow)
  -- Lets send back client coords to the React frame for use
    local curCoords = GetEntityCoords(PlayerPedId())
  
-   local retData <const> = { x = curCoords.x, y = curCoords.y, z = curCoords.z }
+   local retData<const> = { x = curCoords.x, y = curCoords.y, z = curCoords.z }
    cb(retData)
  end)
 
@@ -93,57 +93,6 @@ function SendPlayerDataToApp()
    
 end
 
--- SetDisplay() -> changes the toggle state of our vue app ( isVisible = !isVisible )
---              -> it can also be used to change the app view
-function SetDisplay(bool)
-   display = bool
-   SendNUIMessage({
-      type = 'toggleShow',
-   })
-   SetNuiFocus(bool, bool)
-end
-
--- This callback is used as an example of receiving data from the app
-RegisterNUICallback('receiveData', function(data)
-   local username = data.userName
-   local msg = data.message
-   local type = data.typeOfMessage
-
-   local color = {}
-   if (type == "success") then
-      color = { 100, 255, 100 }
-   elseif (type == "error") then
-      color = { 255, 100, 100 }
-   elseif (type == "warning") then
-      color = { 255, 165, 0 }
-   else
-      color = { 100, 100, 255 }
-   end
-
-   TriggerEvent("chat:addMessage", {
-      color = color,
-      multiline = true,
-      args = { username, msg }
-   })
-
-   SetDisplay(false)
-end)
-
-
--- This callback handles closing the app window within our app
-RegisterNUICallback('exitMenu', function()
-   SetDisplay(false)
-end)
-
--- This callback triggers only if an error occurs
-RegisterNUICallback('error', function(data)
-   TriggerEvent("chat:addMessage", {
-      color = { 255, 100, 100 },
-      multiline = true,
-      args = { data.error }
-   })
-   SetDisplay(false)
-end)
 
 -- Command used to open the view ( you can make the view open on any condition of your choice )
 RegisterCommand("openview", function()

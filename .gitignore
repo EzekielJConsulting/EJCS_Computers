@@ -1,6 +1,6 @@
 .DS_Store
 ui/html/node_modules
-ui/html/dist
+ui/html/build
 
 
 # local env files
