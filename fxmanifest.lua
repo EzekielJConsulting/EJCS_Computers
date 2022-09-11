@@ -21,11 +21,18 @@ client_scripts {
     'client/utils.lua'
 }
 
-ui_page 'web/build/index.html'
- 
+ui_page "web/dist/index.html"
+
 files {
-    'web/build/index.html',
-    'web/build/**/*'
+    "web/dist/*.html",
+    "web/dist/assets/*.js",
+    "web/dist/assets/*.css",
+    "web/dist/assets/*.png",
+    "web/dist/assets/*.jpg",
+    "web/dist/assets/*.gif",
+    "web/dist/assets/*.webp",
+    "web/dist/assets/*.svg",
+    "web/dist/assets/*.jpeg",
 }
 
 dependencies {
